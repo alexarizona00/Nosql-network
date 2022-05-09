@@ -8,18 +8,18 @@ const reactionSchema = new mongoose.Schema({
 const commentSchema = new mongoose.Schema({
 comment: { type: String, required: true },
   // This will add a single subdocument to include the manager's information
-  reaction: reactionSchema,
+  reaction: [reactionSchema],
   lastAccessed: { type: Date, default: Date.now }
 });
 
 // Uses mongoose.model() to create model
-const Department = mongoose.model('Department', departmentSchema);
+const Comment = mongoose.model('Comment', commentSchema);
 
 // Uses model to create new instance including subdocument
 const managerData = { name: 'Taylor', salary: 80000 };
 const employeeData = [
-  { name: 'Ann', salary: 40000 },
-  { name: 'Liu', salary: 50000 },
+  { reaction: "This is a great thought!" },
+  
 ];
 
 Department.create(
