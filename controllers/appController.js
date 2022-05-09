@@ -9,7 +9,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   // Gets a single comments using the findOneAndUpdate method. We pass in the ID of the comments and then respond with it, or an error if not found
-  getSinglecomments(req, res) {
+  getSinglecomment(req, res) {
     Comment.findOne({ _id: req.params.commentId })
       .then((comment) =>
         !comment
@@ -20,7 +20,7 @@ module.exports = {
   },
   // Creates a new comments. Accepts a request body with the entire comments object.
   // Because commentss are associated with Users, we then update the User who created the app and add the ID of the comments to the commentss array
-  createcomments(req, res) {
+  createComment(req, res) {
     Comment.create(req.body)
       .then((comments) => {
         return User.findOneAndUpdate(
