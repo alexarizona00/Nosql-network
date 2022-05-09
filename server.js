@@ -9,10 +9,10 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// 
+
 
 app.post('/new-user/:username', (req, res) => {
-  const newDepartment = new User({ name: req.params.username });
+  const newUser = new User({ name: req.params.username });
   newUser.save();
   if (newUser) {
     res.status(201).json(newUser);
