@@ -18,13 +18,13 @@ User.find({}).exec((err, collection) => {
   if (collection.length === 0) {
     return User.insertMany(
       [
-        { name: 'tester123' },
-        { name: 'johnstamos' },
-        { name: 'olsentwins99' },
-        { name: 'mynameaborat' },
-        { name: 'saulgoodman' },
-        { name: 'iamtesting' },
-        { name: 'lastbutnotleast321' },
+        { username: 'tester123' },
+        { username: 'johnstamos' },
+        { username: 'olsentwins99' },
+        { username: 'mynameaborat' },
+        { username: 'saulgoodman' },
+        { username: 'iamtesting' },
+        { username: 'lastbutnotleast321' },
       ],
       (insertError) =>
         insertError ? handleError(insertError) : console.log('Inserted')
