@@ -1,4 +1,4 @@
-const { User, Application } = require('../models');
+const { User, Comment, reaction } = require('../models');
 
 module.exports = {
   // Get all users
