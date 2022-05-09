@@ -22,7 +22,7 @@ app.post('/new-user/:username', (req, res) => {
   }
 });
 
-// Finds all departments
+// Finds all users
 app.get('/all-users', (req, res) => {
   // Using model in route to find all documents that are instances of that model
   User.find({}, (err, result) => {
