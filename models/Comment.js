@@ -2,23 +2,21 @@ const { Schema, model } = require('mongoose');
 
 const commentSchema = new Schema(
   {
-    published: {
-      type: Boolean,
-      default: false,
+    commentText: {
+      type: String,
+      required: true,
+      minlength: 1,
+      maxlength: 300
     },
     createdAt: {
       type: Date,
       default: Date.now,
     },
-    buildSuccess: {
-      type: Boolean,
-      default: true,
-    },
-    description: {
+    username:{
       type: String,
-      minLength: 1,
-      maxLength: 500,
+      required: true
     },
+    reactions: [reactionSchema]
   },
   {
     toJSON: {
@@ -27,6 +25,10 @@ const commentSchema = new Schema(
     id: false,
   }
 );
+
+commentSchema.virtual('reactioncount').get(function() {
+  return this.reactions.length;
+});
 
 const Comment = model('Comment', commentSchema);
 
