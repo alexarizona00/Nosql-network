@@ -80,7 +80,7 @@ const CommentController = {
     body
   }, res) {
     Comment.findOneAndUpdate({
-      _id: params.CommentId
+      _id: params.id
     }, {
       $set: body
     }, {
@@ -141,7 +141,7 @@ const CommentController = {
     body
   }, res) {
     Comment.findOneAndUpdate({
-      _id: params.CommentId
+      _id: params.id
     }, {
       $push: {
         reactions: body
@@ -166,7 +166,7 @@ const CommentController = {
     params
   }, res) {
     Comment.findOneAndUpdate({
-      _id: params.CommentId
+      _id: params.id
     },
       //allows to remove the reaction by id
       {

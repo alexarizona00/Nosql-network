@@ -1,28 +1,26 @@
 const router = require('express').Router();
 const {
-  getComments,
-  getSinglecomment,
-  createComment,
+  getAllComment,
+  getCommentById,
+  addComment,
   updateComment,
-  deleteComment,
+  removeComment,
   addReaction,
   removeReaction,
 } = require('../../controllers/appController');
 
-// /api/applications
-router.route('/').get(getComments).post(createComment);
+router.route('/').get(getAllComment).post(addComment);
 
-// /api/applications/:applicationId
+
 router
-  .route('/:applicationId')
-  .get(getSinglecomment)
+  .route('/:id')
+  .get(getCommentById)
   .put(updateComment)
-  .delete(deleteComment);
+  .delete(removeComment);
 
-// /api/applications/:applicationId/tags
-router.route('/:commentId/reaction').post(addReaction);
+router.route('/:id/reaction').post(addReaction);
 
 // /api/applications/:applicationId/tags/:tagId
-router.route('/:commentId/reaction/:reactionId').delete(removeReaction);
+router.route('/:id/reaction/:reactionId').delete(removeReaction);
 
 module.exports = router;
